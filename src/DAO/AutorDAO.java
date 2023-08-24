@@ -57,15 +57,18 @@ public class AutorDAO {
         } catch (SQLException e) {
             throw new ExceptionMVC("Erro ao buscar código do autor por nome: " + e);
         } finally {
-            try {
-                if (pStatement != null) {
+            try{
+                if(pStatement != null){
                     pStatement.close();
-                }
-                if (connection != null) {
+                } 
+            }catch(SQLException e){
+              throw new ExceptionMVC("Erro ao fechar statement: "+ e);
+            } try {
+                if(connection != null){
                     connection.close();
                 }
-            } catch (SQLException e) {
-                throw new ExceptionMVC("Erro ao fechar a conexão: " + e);
+            }catch(SQLException e){
+               throw new ExceptionMVC("Erro ao fechar a conexao: "+ e);
             }
         }
     return codAutor;
@@ -124,8 +127,7 @@ public class AutorDAO {
             
         } catch(SQLException e){
             throw new ExceptionMVC("Erro ao alterar o autor: "+ e);
-        } finally{
-            
+        } finally{            
             try{
                 if(pStatement != null){
                     pStatement.close();
@@ -138,7 +140,7 @@ public class AutorDAO {
                 }
             }catch(SQLException e){
                throw new ExceptionMVC("Erro ao fechar a conexao: "+ e);
-                }
+            }
         }
      }
      

@@ -9,14 +9,13 @@ import model.Livros;
 
 public class LivrosDAO {
     public void cadastrarLivros(Livros livros) throws ExceptionMVC {
-        String sql = "INSERT INTO livros (titulo, autor, genero, sinopse, nPaginas, ano) VALUES (?, ?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO livros (titulo, autor, genero, sinopse, nPaginas, ano) VALUES (?, ?, ?, ?, ?, ?)";
     String sqlLivrosAutor = "INSERT INTO livros_autor (codAutor, codLivros) VALUES (?, ?)";
     Connection connection = null;
     PreparedStatement pStatement = null;
     
     try {
-        connection = new ConnectionMVC().getConnection();
-        // Inserir dados na tabela livros
+        connection = new ConnectionMVC().getConnection();        
         pStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         pStatement.setString(1, livros.getTitulo());
         pStatement.setString(2, livros.getAutor());
@@ -26,7 +25,6 @@ public class LivrosDAO {
         pStatement.setInt(6, livros.getAno());
         pStatement.executeUpdate();
 
-        // Recuperar o código do livro recém-cadastrado
         int codLivros;
         try (ResultSet generatedKeys = pStatement.getGeneratedKeys()) {
             if (generatedKeys.next()) {
@@ -35,10 +33,9 @@ public class LivrosDAO {
                 throw new SQLException("Falha ao recuperar o código do livro recém-cadastrado.");
             }
         }
+        
         AutorDAO autorDAO = new AutorDAO();
         int codAutor = autorDAO.buscarCodAutorPorNome(livros.getAutor());
-
-        // Associar o livro ao autor na tabela livros_autor
         try (PreparedStatement pStatementLivrosAutor = connection.prepareStatement(sqlLivrosAutor)) {
             pStatementLivrosAutor.setInt(1, codAutor);
             pStatementLivrosAutor.setInt(2, codLivros);
