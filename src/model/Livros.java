@@ -1,5 +1,6 @@
 package model;
 
+import DAO.AutorDAO;
 import DAO.ExceptionMVC;
 import DAO.LivrosDAO;
 import java.util.ArrayList;
@@ -62,6 +63,10 @@ public class Livros {
     }
     public void setAno(int ano) {
         this.ano = ano;
+    }
+    public int getCodAutor() throws ExceptionMVC {
+        AutorDAO autorDAO = new AutorDAO();
+        return autorDAO.buscarCodAutorPorNome(this.getAutor());
     }
 
     public void cadastrarLivros(Livros livros) throws ExceptionMVC{

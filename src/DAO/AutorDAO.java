@@ -39,7 +39,38 @@ public class AutorDAO {
                 }
         }
     }
-     
+     public int buscarCodAutorPorNome(String nome) throws ExceptionMVC {
+        String sql = "SELECT codAutor FROM autor WHERE nome = ?";
+        Connection connection = null;
+        PreparedStatement pStatement = null;
+        int codAutor = 0;
+
+        try {
+            connection = new ConnectionMVC().getConnection();
+            pStatement = connection.prepareStatement(sql);
+            pStatement.setString(1, nome);
+            ResultSet rs = pStatement.executeQuery();
+
+            if (rs.next()) {
+                codAutor = rs.getInt("codAutor");
+            }
+        } catch (SQLException e) {
+            throw new ExceptionMVC("Erro ao buscar código do autor por nome: " + e);
+        } finally {
+            try {
+                if (pStatement != null) {
+                    pStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                throw new ExceptionMVC("Erro ao fechar a conexão: " + e);
+            }
+        }
+    return codAutor;
+}
+
      public ArrayList<Autor> listarAutores() throws ExceptionMVC{
         String sql = "SELECT * FROM autor ORDER BY nome";
         Connection connection = null;
