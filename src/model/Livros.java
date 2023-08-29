@@ -9,13 +9,13 @@ public class Livros {
     private String titulo, autor, genero, sinopse;
     private int codLivros, nPaginas, ano;
     private ArrayList<Item> itens = new ArrayList<>();
-    private ArrayList<Autor> autores = new ArrayList<>();
+    private ArrayList<String> autores = new ArrayList<>();
 
     public Livros(){        
     }
-    public Livros(String titulo, String autor, String genero, String sinopse, int nPaginas, int ano) {
+    public Livros(String titulo, String genero, String sinopse, int nPaginas, int ano) {
         this.titulo = titulo;
-        this.autor = autor;
+        //this.autor = autor;
         this.genero = genero;   
         this.sinopse = sinopse;
         this.nPaginas = nPaginas;
@@ -69,7 +69,7 @@ public class Livros {
         return autorDAO.buscarCodAutorPorNome(this.getAutor());
     }
 
-    public void cadastrarLivros(Livros livros) throws ExceptionMVC{
+    public void cadastrarLivros(Livros livros) throws ExceptionMVC{       
         new LivrosDAO().cadastrarLivros(livros);
     }
     public ArrayList<Livros> listarLivros(String nome) throws ExceptionMVC{
@@ -83,5 +83,15 @@ public class Livros {
     public void excluirLivros(Livros livros) throws ExceptionMVC{
         new LivrosDAO().excluirLivros(livros);
     }
-    
+    public ArrayList<String> getAutores() {
+        return autores;
+    }
+    public void setAutores(ArrayList<String> autores) {
+    this.autores = autores;
+    }
+
+    public void adicionarAutores(String autor) {
+        autores.add(autor);
+    }
+   
 }

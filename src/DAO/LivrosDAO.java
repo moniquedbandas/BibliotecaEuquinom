@@ -5,11 +5,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import model.Livros;
+import view.TelaCadastros;
 
 public class LivrosDAO {
     public void cadastrarLivros(Livros livros) throws ExceptionMVC {
-    String sql = "INSERT INTO livros (titulo, autor, genero, sinopse, nPaginas, ano) VALUES (?, ?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO livros (titulo,  genero, sinopse, nPaginas, ano) VALUES (?, ?, ?, ?, ?)";
     String sqlLivrosAutor = "INSERT INTO livros_autor (codAutor, codLivros) VALUES (?, ?)";
     Connection connection = null;
     PreparedStatement pStatement = null;
@@ -18,11 +21,11 @@ public class LivrosDAO {
         connection = new ConnectionMVC().getConnection();        
         pStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         pStatement.setString(1, livros.getTitulo());
-        pStatement.setString(2, livros.getAutor());
-        pStatement.setString(3, livros.getGenero());
-        pStatement.setString(4, livros.getSinopse());
-        pStatement.setInt(5, livros.getnPaginas());
-        pStatement.setInt(6, livros.getAno());
+        //pStatement.setString(2, livros.getAutor());
+        pStatement.setString(2, livros.getGenero());
+        pStatement.setString(3, livros.getSinopse());
+        pStatement.setInt(4, livros.getnPaginas());
+        pStatement.setInt(5, livros.getAno());
         pStatement.executeUpdate();
 
         int codLivros;
@@ -33,15 +36,17 @@ public class LivrosDAO {
                 throw new SQLException("Falha ao recuperar o código do livro recém-cadastrado.");
             }
         }
-        
-        AutorDAO autorDAO = new AutorDAO();
-        int codAutor = autorDAO.buscarCodAutorPorNome(livros.getAutor());
+        AutorDAO autorDAO = new AutorDAO(); 
+        for (String autor : livros.getAutores()) {
+        int codAutor = autorDAO.buscarCodAutorPorNome(autor);
         try (PreparedStatement pStatementLivrosAutor = connection.prepareStatement(sqlLivrosAutor)) {
             pStatementLivrosAutor.setInt(1, codAutor);
             pStatementLivrosAutor.setInt(2, codLivros);
             pStatementLivrosAutor.executeUpdate();
         }
-        } catch(SQLException e){
+    
+        }
+    }catch(SQLException e){
             throw new ExceptionMVC("Erro ao cadastrar livro: "+ e);
         } finally{
             

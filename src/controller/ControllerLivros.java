@@ -10,9 +10,10 @@ import model.Livros;
  */
 public class ControllerLivros {
     
-    public boolean cadastrarLivros(String titulo, String autor, String genero, String sinopse, int nPaginas, int ano) throws Exception{
-        if(titulo != null && autor !=null && genero != null && sinopse != null  && nPaginas != 0 && ano != 0 ){
-        Livros livros = new Livros(titulo, autor, genero, sinopse, nPaginas, ano);
+    public boolean cadastrarLivros(String titulo, ArrayList<String> autores, String genero, String sinopse, int nPaginas, int ano) throws Exception{
+        if(titulo != null && !autores.isEmpty() && genero != null && sinopse != null  && nPaginas != 0 && ano != 0 ){
+        Livros livros = new Livros(titulo, genero, sinopse, nPaginas, ano);
+        livros.setAutores(autores);
         livros.cadastrarLivros(livros);
         return true;
     }
@@ -25,7 +26,7 @@ public class ControllerLivros {
     
     public boolean alterarLivros(int codLivros, String titulo, String autor, String genero,String sinopse, int nPaginas, int ano) throws Exception{
         if(titulo != null && autor !=null && genero != null &&  sinopse != null  && nPaginas != 0 && ano != 0 ){
-        Livros livros = new Livros(titulo, autor, genero, sinopse, nPaginas, ano);
+        Livros livros = new Livros(titulo, genero, sinopse, nPaginas, ano);
         livros.setCodLivros(codLivros);
         livros.alterarLivros(livros);
         return true;

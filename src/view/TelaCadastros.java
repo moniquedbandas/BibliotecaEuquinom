@@ -11,19 +11,26 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Autor;
+import model.Livros;
 
 public class TelaCadastros extends javax.swing.JFrame {
-
+    private Livros livros;
+    
     public TelaCadastros() {
         initComponents(); 
+        livros = new Livros();
         //jTabbedPaneCadastro.setEnabledAt(3, false);
     }    
     private int codLivros=0;
     private int codAutor=0;
     private int codCliente=0;
     private int codItem=0;
+    public JTable getJTableNomeAutor() {
+        return jTableNomeAutor;
+    }
     
     public void selecionarGuia(int index) {
         if (jTabbedPaneCadastro != null && index >= 0 && index < jTabbedPaneCadastro.getTabCount()) {
@@ -168,7 +175,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonBotaoLimparAutor.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonBotaoLimparAutor.setText("Limpar");
         jButtonBotaoLimparAutor.setContentAreaFilled(false);
-        jButtonBotaoLimparAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonBotaoLimparAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonBotaoLimparAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limparAutor(evt);
@@ -178,7 +185,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonBotaoSalvarAutor.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonBotaoSalvarAutor.setText("Salvar");
         jButtonBotaoSalvarAutor.setContentAreaFilled(false);
-        jButtonBotaoSalvarAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonBotaoSalvarAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonBotaoSalvarAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarAutor(evt);
@@ -188,7 +195,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonConsultarAutor.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonConsultarAutor.setText("Consultar");
         jButtonConsultarAutor.setContentAreaFilled(false);
-        jButtonConsultarAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonConsultarAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonConsultarAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarAutor(evt);
@@ -200,7 +207,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         painelAutorLayout.setHorizontalGroup(
             painelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAutorLayout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addGroup(painelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelAutorLayout.createSequentialGroup()
                         .addGroup(painelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -250,6 +257,11 @@ public class TelaCadastros extends javax.swing.JFrame {
 
         jTextFieldTitulo.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jTextFieldTitulo.setToolTipText("Informe o titulo");
+        jTextFieldTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTituloActionPerformed(evt);
+            }
+        });
 
         jTextFieldGenero.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jTextFieldGenero.setToolTipText("Informe o genero");
@@ -275,7 +287,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonBotaoLimparLivros.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonBotaoLimparLivros.setText("Limpar");
         jButtonBotaoLimparLivros.setContentAreaFilled(false);
-        jButtonBotaoLimparLivros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonBotaoLimparLivros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonBotaoLimparLivros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limparLivros(evt);
@@ -285,7 +297,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonBotaoSalvarLivros.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonBotaoSalvarLivros.setText("Salvar");
         jButtonBotaoSalvarLivros.setContentAreaFilled(false);
-        jButtonBotaoSalvarLivros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonBotaoSalvarLivros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonBotaoSalvarLivros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarLivros(evt);
@@ -295,10 +307,10 @@ public class TelaCadastros extends javax.swing.JFrame {
         jComboBoxAutor.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jComboBoxAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jComboBoxAutor.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 jComboBoxAutorAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -307,7 +319,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         consultarLivros.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         consultarLivros.setText("Consultar");
         consultarLivros.setContentAreaFilled(false);
-        consultarLivros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        consultarLivros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         consultarLivros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarLivros(evt);
@@ -336,7 +348,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         addAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoAdd.png"))); // NOI18N
         addAutor.setBorderPainted(false);
         addAutor.setContentAreaFilled(false);
-        addAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addAutorActionPerformed(evt);
@@ -367,22 +379,22 @@ public class TelaCadastros extends javax.swing.JFrame {
                                 .addComponent(jLabelAno))
                             .addGroup(painelLivrosLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(26, 26, 26)
+                                .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(14, 14, 14)
                 .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jLabelAutor, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxAutor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addAutor))
                     .addGroup(painelLivrosLayout.createSequentialGroup()
                         .addComponent(jButtonBotaoLimparLivros)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonBotaoSalvarLivros)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(consultarLivros))
-                    .addGroup(painelLivrosLayout.createSequentialGroup()
-                        .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jLabelAutor, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxAutor, javax.swing.GroupLayout.Alignment.LEADING, 0, 259, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(addAutor)))
+                        .addComponent(consultarLivros)))
                 .addGap(0, 31, Short.MAX_VALUE))
         );
         painelLivrosLayout.setVerticalGroup(
@@ -412,20 +424,18 @@ public class TelaCadastros extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelAno)
+                    .addComponent(jLabelnPgs))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(painelLivrosLayout.createSequentialGroup()
-                        .addComponent(jLabelAno)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonBotaoLimparLivros)
-                            .addComponent(jButtonBotaoSalvarLivros)
-                            .addComponent(consultarLivros)
-                            .addComponent(jTextFieldAno)))
-                    .addGroup(painelLivrosLayout.createSequentialGroup()
-                        .addComponent(jLabelnPgs)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldNpgs, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addComponent(jTextFieldNpgs, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonBotaoLimparLivros)
+                        .addComponent(jButtonBotaoSalvarLivros)
+                        .addComponent(consultarLivros))
+                    .addComponent(jTextFieldAno, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jTabbedPaneCadastro.addTab("LIVROS", painelLivros);
@@ -460,7 +470,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonBotaoLimparCliente.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonBotaoLimparCliente.setText("Limpar");
         jButtonBotaoLimparCliente.setContentAreaFilled(false);
-        jButtonBotaoLimparCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonBotaoLimparCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonBotaoLimparCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limparCliente(evt);
@@ -470,7 +480,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonBotaoSalvarCliente.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonBotaoSalvarCliente.setText("Salvar");
         jButtonBotaoSalvarCliente.setContentAreaFilled(false);
-        jButtonBotaoSalvarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonBotaoSalvarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonBotaoSalvarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarCliente(evt);
@@ -494,7 +504,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonConsultaCliente.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonConsultaCliente.setText("Consultar");
         jButtonConsultaCliente.setContentAreaFilled(false);
-        jButtonConsultaCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonConsultaCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonConsultaCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarCliente(evt);
@@ -506,7 +516,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         painelClienteLayout.setHorizontalGroup(
             painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelClienteLayout.createSequentialGroup()
-                .addContainerGap(71, Short.MAX_VALUE)
+                .addContainerGap(53, Short.MAX_VALUE)
                 .addGroup(painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(painelClienteLayout.createSequentialGroup()
@@ -575,7 +585,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         salvarItens.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         salvarItens.setText("Salvar");
         salvarItens.setContentAreaFilled(false);
-        salvarItens.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salvarItens.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         salvarItens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarItensActionPerformed(evt);
@@ -585,7 +595,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         limparItens.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         limparItens.setText("Limpar");
         limparItens.setContentAreaFilled(false);
-        limparItens.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        limparItens.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         limparItens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limparItensActionPerformed(evt);
@@ -595,7 +605,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         consultarItens.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         consultarItens.setText("Consultar");
         consultarItens.setContentAreaFilled(false);
-        consultarItens.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        consultarItens.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         consultarItens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarItensActionPerformed(evt);
@@ -625,7 +635,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         deletarItem.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         deletarItem.setText("Deletar");
         deletarItem.setContentAreaFilled(false);
-        deletarItem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deletarItem.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         deletarItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deletarItemActionPerformed(evt);
@@ -637,7 +647,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         painelItensLayout.setHorizontalGroup(
             painelItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelItensLayout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addContainerGap(59, Short.MAX_VALUE)
                 .addGroup(painelItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelItensLayout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -686,7 +696,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonBotaoSairCadastro.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonBotaoSairCadastro.setText("Sair");
         jButtonBotaoSairCadastro.setContentAreaFilled(false);
-        jButtonBotaoSairCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonBotaoSairCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonBotaoSairCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoSairCadastro(evt);
@@ -700,17 +710,17 @@ public class TelaCadastros extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPaneCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(282, 282, 282)
                         .addComponent(jButtonBotaoSairCadastro))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addComponent(jLabelAreaCad, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48)
-                        .addComponent(jLabelLogoCad)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                        .addComponent(jLabelLogoCad))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jTabbedPaneCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -791,22 +801,27 @@ public class TelaCadastros extends javax.swing.JFrame {
 
     private void salvarLivros(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarLivros
         int nPaginas = Integer.parseInt(jTextFieldNpgs.getText().toString());
-        int ano = Integer.parseInt(jTextFieldAno.getText().toString());        
-        //String autor = jComboBoxAutor.getSelectedItem().toString();
-        String autor = (String) jTableNomeAutor.getValueAt(jTableNomeAutor.getSelectedRow(),0);
-               
+        int ano = Integer.parseInt(jTextFieldAno.getText().toString());                    
         boolean sucesso;
 
         try{
             ControllerLivros controllerLivros = new ControllerLivros();
-            sucesso = controllerLivros.cadastrarLivros(jTextFieldTitulo.getText(), autor, jTextFieldGenero.getText(),jTextAreaSinopse.getText(), nPaginas, ano);
+            DefaultTableModel modelAutor = (DefaultTableModel) jTableNomeAutor.getModel();
+            ArrayList<String> autores = new ArrayList<>();
+            for (int i = 0; i < modelAutor.getRowCount(); i++) {
+            String autor = (String) modelAutor.getValueAt(i, 0);
+            autores.add(autor);
+            } 
+            sucesso = controllerLivros.cadastrarLivros(jTextFieldTitulo.getText(), autores, jTextFieldGenero.getText(),jTextAreaSinopse.getText(), nPaginas, ano);
             if(sucesso==true){
                 JOptionPane.showMessageDialog(null, "Livro cadastrado com sucesso!");
                 this.limparLivros(evt);
+           
             }else{
                 JOptionPane.showMessageDialog(null, "Os campos não foram preenchidos corretamente.");
             }
-        }catch(Exception e){
+        
+    }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Erro" +e);
         }
     }//GEN-LAST:event_salvarLivros
@@ -817,8 +832,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jTextFieldGenero.setText("");
         jTextAreaSinopse.setText("");
         jTextFieldNpgs.setText("");
-        jTextFieldAno.setText("");
-        
+        jTextFieldAno.setText("");        
     }//GEN-LAST:event_limparLivros
 
     private void consultarAutor(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAutor
@@ -908,7 +922,12 @@ public class TelaCadastros extends javax.swing.JFrame {
         DefaultTableModel modelAutor = (DefaultTableModel) jTableNomeAutor.getModel();
         String autor = jComboBoxAutor.getSelectedItem().toString();
         modelAutor.addRow(new Object[]{autor});
+        livros.adicionarAutores(autor);
     }//GEN-LAST:event_addAutorActionPerformed
+
+    private void jTextFieldTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTituloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTituloActionPerformed
 
     public static void main(String args[]) {
 

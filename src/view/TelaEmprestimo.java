@@ -2,8 +2,10 @@
 package view;
 
 import controller.ControllerEmprestimo;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Emprestimo;
 
 public class TelaEmprestimo extends javax.swing.JFrame {
 
@@ -321,7 +323,9 @@ public class TelaEmprestimo extends javax.swing.JFrame {
        jTextFieldNomeClienteEmp.setText("");
        jTextFieldCodLivroEmp.setText("");
        jTextFieldTituloEmpr.setText("");
-       jFormattedTextFieldDataEmp.setText("");      
+       jFormattedTextFieldDataEmp.setText(""); 
+       DefaultTableModel model = (DefaultTableModel) jTableEmprestimo.getModel();
+       model.setRowCount(0);
     }//GEN-LAST:event_jButtonBotaoLimparEmpActionPerformed
 
     private void pesqClienteEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesqClienteEmpActionPerformed
@@ -339,12 +343,20 @@ public class TelaEmprestimo extends javax.swing.JFrame {
 
     private void cadastrarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarEmpActionPerformed
         boolean sucesso;        
-        int codItem = Integer.parseInt(jTextFieldCodLivroEmp.getText());
-        int codCliente = Integer.parseInt(jTextFieldCodClienteEmp.getText());
-        String dataEmprestimo = jFormattedTextFieldDataEmp.getText();
+        DefaultTableModel model = (DefaultTableModel) jTableEmprestimo.getModel();
+        ArrayList<Emprestimo> emprestimos = new ArrayList<>();
+    
+        for (int i = 0; i < model.getRowCount(); i++) {
+        int codItem = (int) model.getValueAt(i, 2); // Coluna do Código do Item
+        int codCliente = (int) model.getValueAt(i, 0); // Coluna do Código do Cliente
+        String dataEmprestimo = model.getValueAt(i, 4).toString(); // Coluna da Data do Empréstimo
+        
+        Emprestimo emprestimo = new Emprestimo(codItem, codCliente, dataEmprestimo);
+        emprestimos.add(emprestimo);
+    }
         try {
             ControllerEmprestimo controllerEmprestimo = new ControllerEmprestimo();
-            sucesso= controllerEmprestimo.cadastrarEmprestimo(codItem, codCliente, dataEmprestimo);
+            sucesso= controllerEmprestimo.cadastrarTabelaEmprestimo(emprestimos);
         if(sucesso==true){
             JOptionPane.showMessageDialog(null, "Emprestimo cadastrado com sucesso!");
             }            
@@ -360,7 +372,7 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         Integer codItem = Integer.parseInt(jTextFieldCodLivroEmp.getText());
         String tituloItem = jTextFieldTituloEmpr.getText();
         String dataEmprestimo = jFormattedTextFieldDataEmp.getText();
-        model.addRow(new Object[] { codCliente, nomeCliente, codItem, tituloItem, dataEmprestimo });
+        model.addRow(new Object[] {codCliente, nomeCliente, codItem, tituloItem, dataEmprestimo});
     }//GEN-LAST:event_salvarTabelaEmprestimoActionPerformed
 
     /**

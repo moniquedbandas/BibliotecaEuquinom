@@ -7,7 +7,7 @@ import DAO.ItemDAO;
 import java.util.ArrayList;
 
 public class Emprestimo {
-    private int codEmprestimo, codItem, codCliente;
+    private int  codItem, codCliente;
     private String dataEmprestimo;
     private Cliente cliente;
     private ArrayList<Item> itens = new ArrayList<>();
@@ -21,13 +21,7 @@ public class Emprestimo {
         this.dataEmprestimo = dataEmprestimo;        
     }
 
-    public int getCodEmprestimo() {
-        return codEmprestimo;
-    }
-
-    public void setCodEmprestimo(int codEmprestimo) {
-        this.codEmprestimo = codEmprestimo;
-    }
+   
 
     public int getCodItem() {
         return codItem;
@@ -68,7 +62,17 @@ public class Emprestimo {
         return new ItemDAO().listarItens(titulo);
     }
     
-    public void cadastrarEmprestimo(Emprestimo emprestimo) throws ExceptionMVC{
-        new EmprestimoDAO().cadastrarEmprestimo(emprestimo);
+//    public void cadastrarEmprestimo(Emprestimo emprestimo) throws ExceptionMVC{
+//        new EmprestimoDAO().cadastrarEmprestimo(emprestimo);
+//    }
+    public boolean cadastrarEmprestimo() throws ExceptionMVC {
+        EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
+        try {
+            emprestimoDAO.cadastrarEmprestimo(this);
+            return true;
+        } catch (ExceptionMVC e) {
+            System.err.println("Erro ao cadastrar empréstimo: " + e);
+            return false;
+        }
     }
 }
