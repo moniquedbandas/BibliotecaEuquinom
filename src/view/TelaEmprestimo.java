@@ -45,7 +45,8 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         jTableEmprestimo = new javax.swing.JTable();
         salvarTabelaEmprestimo = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Emprestimo");
         setResizable(false);
 
         jLabelTituloEmp.setFont(new java.awt.Font("Monotype Corsiva", 0, 48)); // NOI18N
@@ -58,7 +59,7 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         cadastrarEmp.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         cadastrarEmp.setText("Cadastrar");
         cadastrarEmp.setContentAreaFilled(false);
-        cadastrarEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cadastrarEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cadastrarEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastrarEmpActionPerformed(evt);
@@ -68,7 +69,7 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         jButtonBotaoLimparEmp.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonBotaoLimparEmp.setText("Limpar");
         jButtonBotaoLimparEmp.setContentAreaFilled(false);
-        jButtonBotaoLimparEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonBotaoLimparEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonBotaoLimparEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBotaoLimparEmpActionPerformed(evt);
@@ -78,7 +79,7 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         jButtonBotaoSairEmp.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonBotaoSairEmp.setText("Sair");
         jButtonBotaoSairEmp.setContentAreaFilled(false);
-        jButtonBotaoSairEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonBotaoSairEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonBotaoSairEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBotaoSairEmpActionPerformed(evt);
@@ -244,7 +245,7 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         salvarTabelaEmprestimo.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         salvarTabelaEmprestimo.setText("Salvar");
         salvarTabelaEmprestimo.setContentAreaFilled(false);
-        salvarTabelaEmprestimo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salvarTabelaEmprestimo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         salvarTabelaEmprestimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarTabelaEmprestimoActionPerformed(evt);

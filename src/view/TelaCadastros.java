@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.Autor;
 
 public class TelaCadastros extends javax.swing.JFrame {
@@ -98,6 +99,9 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonBotaoSalvarLivros = new javax.swing.JButton();
         jComboBoxAutor = new javax.swing.JComboBox();
         consultarLivros = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableNomeAutor = new javax.swing.JTable();
+        addAutor = new javax.swing.JButton();
         painelCliente = new javax.swing.JPanel();
         jLabelNomeCliente = new javax.swing.JLabel();
         jLabelCPF = new javax.swing.JLabel();
@@ -164,7 +168,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonBotaoLimparAutor.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonBotaoLimparAutor.setText("Limpar");
         jButtonBotaoLimparAutor.setContentAreaFilled(false);
-        jButtonBotaoLimparAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonBotaoLimparAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBotaoLimparAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limparAutor(evt);
@@ -174,7 +178,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonBotaoSalvarAutor.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonBotaoSalvarAutor.setText("Salvar");
         jButtonBotaoSalvarAutor.setContentAreaFilled(false);
-        jButtonBotaoSalvarAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonBotaoSalvarAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBotaoSalvarAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarAutor(evt);
@@ -184,6 +188,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonConsultarAutor.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonConsultarAutor.setText("Consultar");
         jButtonConsultarAutor.setContentAreaFilled(false);
+        jButtonConsultarAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonConsultarAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarAutor(evt);
@@ -195,26 +200,27 @@ public class TelaCadastros extends javax.swing.JFrame {
         painelAutorLayout.setHorizontalGroup(
             painelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAutorLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(painelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelNacionalidade)
-                    .addComponent(jLabelNomeAutor)
-                    .addComponent(jTextFieldNomeAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                    .addComponent(jComboBoxNacionalidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(264, 264, 264))
-            .addGroup(painelAutorLayout.createSequentialGroup()
-                .addGap(222, 222, 222)
-                .addComponent(jButtonBotaoLimparAutor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonBotaoSalvarAutor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonConsultarAutor)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addGroup(painelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelAutorLayout.createSequentialGroup()
+                        .addGroup(painelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(painelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelNacionalidade)
+                                .addComponent(jLabelNomeAutor)
+                                .addComponent(jComboBoxNacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(painelAutorLayout.createSequentialGroup()
+                                .addComponent(jButtonBotaoLimparAutor)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonBotaoSalvarAutor)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonConsultarAutor))
+                    .addComponent(jTextFieldNomeAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47))
         );
         painelAutorLayout.setVerticalGroup(
             painelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAutorLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(55, 55, 55)
                 .addComponent(jLabelNomeAutor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldNomeAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,12 +228,12 @@ public class TelaCadastros extends javax.swing.JFrame {
                 .addComponent(jLabelNacionalidade)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBoxNacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addGroup(painelAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonBotaoLimparAutor)
                     .addComponent(jButtonBotaoSalvarAutor)
                     .addComponent(jButtonConsultarAutor))
-                .addContainerGap())
+                .addGap(25, 25, 25))
         );
 
         jTabbedPaneCadastro.addTab("AUTOR", painelAutor);
@@ -266,20 +272,20 @@ public class TelaCadastros extends javax.swing.JFrame {
 
         jTextFieldAno.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        jButtonBotaoLimparLivros.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jButtonBotaoLimparLivros.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonBotaoLimparLivros.setText("Limpar");
         jButtonBotaoLimparLivros.setContentAreaFilled(false);
-        jButtonBotaoLimparLivros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonBotaoLimparLivros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBotaoLimparLivros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limparLivros(evt);
             }
         });
 
-        jButtonBotaoSalvarLivros.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jButtonBotaoSalvarLivros.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonBotaoSalvarLivros.setText("Salvar");
         jButtonBotaoSalvarLivros.setContentAreaFilled(false);
-        jButtonBotaoSalvarLivros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonBotaoSalvarLivros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBotaoSalvarLivros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarLivros(evt);
@@ -298,13 +304,42 @@ public class TelaCadastros extends javax.swing.JFrame {
             }
         });
 
-        consultarLivros.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        consultarLivros.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         consultarLivros.setText("Consultar");
         consultarLivros.setContentAreaFilled(false);
-        consultarLivros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        consultarLivros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         consultarLivros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarLivros(evt);
+            }
+        });
+
+        jTableNomeAutor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTableNomeAutor);
+
+        addAutor.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        addAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botaoAdd.png"))); // NOI18N
+        addAutor.setBorderPainted(false);
+        addAutor.setContentAreaFilled(false);
+        addAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAutorActionPerformed(evt);
             }
         });
 
@@ -314,74 +349,83 @@ public class TelaCadastros extends javax.swing.JFrame {
             painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelLivrosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelGenero)
-                    .addComponent(jLabelAutor)
-                    .addComponent(jLabelTitulo)
-                    .addComponent(jTextFieldTitulo)
-                    .addComponent(jTextFieldGenero)
-                    .addComponent(jComboBoxAutor, 0, 259, Short.MAX_VALUE))
-                .addGap(45, 45, 45)
+                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabelGenero, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabelTitulo, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                        .addComponent(jTextFieldGenero, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jLabelSinopse)
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelnPgs)
+                            .addComponent(jTextFieldNpgs, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelLivrosLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabelAno))
+                            .addGroup(painelLivrosLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(26, 26, 26)
                 .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelLivrosLayout.createSequentialGroup()
-                        .addComponent(jLabelSinopse)
-                        .addGap(20, 20, 20))
+                        .addComponent(jButtonBotaoLimparLivros)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonBotaoSalvarLivros)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(consultarLivros))
                     .addGroup(painelLivrosLayout.createSequentialGroup()
-                        .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelLivrosLayout.createSequentialGroup()
-                                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelnPgs)
-                                    .addComponent(jTextFieldNpgs))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelAno))))
-                        .addGap(79, 79, 79))))
-            .addGroup(painelLivrosLayout.createSequentialGroup()
-                .addGap(218, 218, 218)
-                .addComponent(jButtonBotaoLimparLivros)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonBotaoSalvarLivros)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(consultarLivros)
-                .addGap(0, 203, Short.MAX_VALUE))
+                        .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jLabelAutor, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxAutor, javax.swing.GroupLayout.Alignment.LEADING, 0, 259, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addAutor)))
+                .addGap(0, 31, Short.MAX_VALUE))
         );
         painelLivrosLayout.setVerticalGroup(
             painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelLivrosLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(painelLivrosLayout.createSequentialGroup()
                         .addComponent(jLabelTitulo)
                         .addGap(5, 5, 5)
                         .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabelAutor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelGenero)
                         .addGap(13, 13, 13)
-                        .addComponent(jTextFieldGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLivrosLayout.createSequentialGroup()
+                        .addComponent(jTextFieldGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelSinopse)
                         .addGap(5, 5, 5)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelnPgs)
-                            .addComponent(jLabelAno))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(painelLivrosLayout.createSequentialGroup()
+                                .addComponent(jLabelAutor)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(addAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addComponent(jLabelAno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldNpgs, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonBotaoSalvarLivros)
-                    .addComponent(consultarLivros)
-                    .addComponent(jButtonBotaoLimparLivros))
-                .addContainerGap())
+                            .addComponent(jButtonBotaoLimparLivros)
+                            .addComponent(jButtonBotaoSalvarLivros)
+                            .addComponent(consultarLivros)
+                            .addComponent(jTextFieldAno)))
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addComponent(jLabelnPgs)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldNpgs, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jTabbedPaneCadastro.addTab("LIVROS", painelLivros);
@@ -416,7 +460,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonBotaoLimparCliente.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonBotaoLimparCliente.setText("Limpar");
         jButtonBotaoLimparCliente.setContentAreaFilled(false);
-        jButtonBotaoLimparCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonBotaoLimparCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBotaoLimparCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limparCliente(evt);
@@ -426,7 +470,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonBotaoSalvarCliente.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonBotaoSalvarCliente.setText("Salvar");
         jButtonBotaoSalvarCliente.setContentAreaFilled(false);
-        jButtonBotaoSalvarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonBotaoSalvarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBotaoSalvarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarCliente(evt);
@@ -450,7 +494,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonConsultaCliente.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonConsultaCliente.setText("Consultar");
         jButtonConsultaCliente.setContentAreaFilled(false);
-        jButtonConsultaCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonConsultaCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonConsultaCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarCliente(evt);
@@ -462,64 +506,66 @@ public class TelaCadastros extends javax.swing.JFrame {
         painelClienteLayout.setHorizontalGroup(
             painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelClienteLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(71, Short.MAX_VALUE)
                 .addGroup(painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelClienteLayout.createSequentialGroup()
-                        .addGroup(painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelNomeCliente)
-                            .addComponent(jTextFieldNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                            .addComponent(jLabelTelefone)
-                            .addComponent(jFormattedTextFieldTelefone))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
-                        .addGroup(painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelCPF)
-                            .addComponent(jLabelEmail)
-                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                            .addComponent(jFormattedTextFieldCPF))
-                        .addGap(71, 71, 71))
-                    .addGroup(painelClienteLayout.createSequentialGroup()
-                        .addGroup(painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelEndereco)
-                            .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(painelClienteLayout.createSequentialGroup()
-                .addGap(221, 221, 221)
-                .addComponent(jButtonBotaoLimparCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonBotaoSalvarCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonConsultaCliente)
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(painelClienteLayout.createSequentialGroup()
+                            .addGroup(painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelEndereco)
+                                .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(313, 313, 313))
+                        .addGroup(painelClienteLayout.createSequentialGroup()
+                            .addGroup(painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabelNomeCliente)
+                                .addComponent(jTextFieldNomeCliente)
+                                .addComponent(jLabelTelefone)
+                                .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabelCPF)
+                                .addComponent(jLabelEmail)
+                                .addComponent(jTextFieldEmail)
+                                .addComponent(jFormattedTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(90, 90, 90)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelClienteLayout.createSequentialGroup()
+                        .addComponent(jButtonBotaoLimparCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonBotaoSalvarCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonConsultaCliente)
+                        .addGap(184, 184, 184))))
         );
         painelClienteLayout.setVerticalGroup(
             painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelClienteLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNomeCliente)
-                    .addComponent(jLabelCPF))
-                .addGap(2, 2, 2)
-                .addGroup(painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTelefone)
-                    .addComponent(jLabelEmail))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66)
+                .addGroup(painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(painelClienteLayout.createSequentialGroup()
+                        .addComponent(jLabelNomeCliente)
+                        .addGap(2, 2, 2)
+                        .addComponent(jTextFieldNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelTelefone)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelClienteLayout.createSequentialGroup()
+                        .addComponent(jLabelCPF)
+                        .addGap(2, 2, 2)
+                        .addComponent(jFormattedTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelEmail)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelEndereco)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonBotaoLimparCliente)
                     .addComponent(jButtonBotaoSalvarCliente)
                     .addComponent(jButtonConsultaCliente))
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
 
         jTabbedPaneCadastro.addTab("CLIENTE", painelCliente);
@@ -529,7 +575,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         salvarItens.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         salvarItens.setText("Salvar");
         salvarItens.setContentAreaFilled(false);
-        salvarItens.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        salvarItens.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         salvarItens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarItensActionPerformed(evt);
@@ -539,7 +585,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         limparItens.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         limparItens.setText("Limpar");
         limparItens.setContentAreaFilled(false);
-        limparItens.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        limparItens.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         limparItens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limparItensActionPerformed(evt);
@@ -549,7 +595,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         consultarItens.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         consultarItens.setText("Consultar");
         consultarItens.setContentAreaFilled(false);
-        consultarItens.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        consultarItens.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         consultarItens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarItensActionPerformed(evt);
@@ -579,7 +625,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         deletarItem.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         deletarItem.setText("Deletar");
         deletarItem.setContentAreaFilled(false);
-        deletarItem.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        deletarItem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deletarItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deletarItemActionPerformed(evt);
@@ -591,36 +637,33 @@ public class TelaCadastros extends javax.swing.JFrame {
         painelItensLayout.setHorizontalGroup(
             painelItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelItensLayout.createSequentialGroup()
-                .addGroup(painelItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap(77, Short.MAX_VALUE)
+                .addGroup(painelItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelItensLayout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(limparItens)
-                        .addGap(18, 18, 18)
-                        .addComponent(salvarItens)
-                        .addGap(18, 18, 18)
-                        .addComponent(deletarItem)
-                        .addGap(18, 18, 18)
-                        .addComponent(consultarItens)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldTituloItens, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(consultaItens, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(painelItensLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
                         .addGroup(painelItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelItensLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(limparItens)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBoxItens, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(painelItensLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldTituloItens, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(consultaItens, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(155, 155, 155))
+                                .addComponent(salvarItens)
+                                .addGap(18, 18, 18)
+                                .addComponent(deletarItem)
+                                .addGap(18, 18, 18)
+                                .addComponent(consultarItens))
+                            .addComponent(jComboBoxItens, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(34, 34, 34))
         );
         painelItensLayout.setVerticalGroup(
             painelItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelItensLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(110, 110, 110)
                 .addGroup(painelItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextFieldTituloItens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -629,13 +672,13 @@ public class TelaCadastros extends javax.swing.JFrame {
                 .addGroup(painelItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jComboBoxItens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addGroup(painelItensLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(salvarItens)
                     .addComponent(limparItens)
                     .addComponent(consultarItens)
                     .addComponent(deletarItem))
-                .addGap(15, 15, 15))
+                .addGap(21, 21, 21))
         );
 
         jTabbedPaneCadastro.addTab("ITENS", painelItens);
@@ -643,7 +686,7 @@ public class TelaCadastros extends javax.swing.JFrame {
         jButtonBotaoSairCadastro.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonBotaoSairCadastro.setText("Sair");
         jButtonBotaoSairCadastro.setContentAreaFilled(false);
-        jButtonBotaoSairCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonBotaoSairCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBotaoSairCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoSairCadastro(evt);
@@ -658,16 +701,16 @@ public class TelaCadastros extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabelAreaCad, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabelLogoCad))
+                        .addComponent(jTabbedPaneCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(304, 304, 304)
+                        .addGap(282, 282, 282)
                         .addComponent(jButtonBotaoSairCadastro))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPaneCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                        .addGap(81, 81, 81)
+                        .addComponent(jLabelAreaCad, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabelLogoCad)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -677,10 +720,10 @@ public class TelaCadastros extends javax.swing.JFrame {
                     .addComponent(jLabelLogoCad, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelAreaCad, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPaneCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPaneCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jButtonBotaoSairCadastro)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -749,7 +792,9 @@ public class TelaCadastros extends javax.swing.JFrame {
     private void salvarLivros(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarLivros
         int nPaginas = Integer.parseInt(jTextFieldNpgs.getText().toString());
         int ano = Integer.parseInt(jTextFieldAno.getText().toString());        
-        String autor = jComboBoxAutor.getSelectedItem().toString();
+        //String autor = jComboBoxAutor.getSelectedItem().toString();
+        String autor = (String) jTableNomeAutor.getValueAt(jTableNomeAutor.getSelectedRow(),0);
+               
         boolean sucesso;
 
         try{
@@ -762,7 +807,7 @@ public class TelaCadastros extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Os campos não foram preenchidos corretamente.");
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro"+e);
+            JOptionPane.showMessageDialog(null, "Erro" +e);
         }
     }//GEN-LAST:event_salvarLivros
 
@@ -859,6 +904,12 @@ public class TelaCadastros extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deletarItemActionPerformed
 
+    private void addAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAutorActionPerformed
+        DefaultTableModel modelAutor = (DefaultTableModel) jTableNomeAutor.getModel();
+        String autor = jComboBoxAutor.getSelectedItem().toString();
+        modelAutor.addRow(new Object[]{autor});
+    }//GEN-LAST:event_addAutorActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -869,6 +920,7 @@ public class TelaCadastros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addAutor;
     private javax.swing.JButton consultaItens;
     private javax.swing.JButton consultarItens;
     private javax.swing.JButton consultarLivros;
@@ -906,7 +958,9 @@ public class TelaCadastros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelnPgs;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPaneCadastro;
+    private javax.swing.JTable jTableNomeAutor;
     private javax.swing.JTextArea jTextAreaSinopse;
     private javax.swing.JTextField jTextFieldAno;
     private javax.swing.JTextField jTextFieldEmail;

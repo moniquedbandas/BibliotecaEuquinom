@@ -38,7 +38,7 @@ public class TelaConsultaLivros extends javax.swing.JFrame {
         limparLivros = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Area de pesquisa");
+        setTitle("Area de consulta de livros");
         setResizable(false);
 
         jLabelAreaPesquisa.setFont(new java.awt.Font("Monotype Corsiva", 1, 36)); // NOI18N

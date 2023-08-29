@@ -43,7 +43,8 @@ public class TelaConsultaAutor extends javax.swing.JFrame {
         limparAutor = new javax.swing.JButton();
         sairAutor = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Area de consulta de autor");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -139,6 +140,11 @@ public class TelaConsultaAutor extends javax.swing.JFrame {
         limparAutor.setText("Limpar");
         limparAutor.setContentAreaFilled(false);
         limparAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        limparAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limparAutorActionPerformed(evt);
+            }
+        });
 
         sairAutor.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         sairAutor.setText("Sair");
@@ -295,6 +301,12 @@ public class TelaConsultaAutor extends javax.swing.JFrame {
                 Logger.getLogger(TelaCadastros.class.getName()).log(Level.SEVERE, null, e);
             }
     }//GEN-LAST:event_deletarAutorActionPerformed
+
+    private void limparAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparAutorActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableConsultaAutor.getModel();
+        model.setRowCount(0);
+        jTextFieldConsultaAutor.setText("");
+    }//GEN-LAST:event_limparAutorActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

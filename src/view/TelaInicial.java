@@ -144,7 +144,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private void BtCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCadastroActionPerformed
         TelaCadastros telCad = new TelaCadastros();
         telCad.setVisible(true);
-        telCad.setSize(700,455);
+        telCad.setSize(650, 560);
         telCad.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_BtCadastroActionPerformed
 
