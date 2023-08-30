@@ -102,7 +102,7 @@ public class EmprestimoDAO {
         return itemLista;
     }
     
-    public void cadastrarEmprestimo(Emprestimo emprestimo) throws ExceptionMVC {
+     public void cadastrarEmprestimo(Emprestimo emprestimo) throws ExceptionMVC {
         String sql = "INSERT INTO emprestimo (codItem, codCliente, dataEmprestimo ) VALUE (?,?,?)";
         PreparedStatement pStatement = null;
         Connection connection = null;
