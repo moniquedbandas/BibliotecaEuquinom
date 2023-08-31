@@ -151,7 +151,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private void BtEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEmprestimoActionPerformed
         TelaEmprestimo telEmp = new TelaEmprestimo();
         telEmp.setVisible(true);
-        telEmp.setSize(805, 560);
+        telEmp.setSize(715, 590);
         telEmp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_BtEmprestimoActionPerformed
 

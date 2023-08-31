@@ -307,10 +307,10 @@ public class TelaCadastros extends javax.swing.JFrame {
         jComboBoxAutor.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jComboBoxAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jComboBoxAutor.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 jComboBoxAutorAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }

@@ -15,7 +15,6 @@ public class Livros {
     }
     public Livros(String titulo, String genero, String sinopse, int nPaginas, int ano) {
         this.titulo = titulo;
-        //this.autor = autor;
         this.genero = genero;   
         this.sinopse = sinopse;
         this.nPaginas = nPaginas;

@@ -5,10 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 import model.Livros;
-import view.TelaCadastros;
 
 public class LivrosDAO {
     public void cadastrarLivros(Livros livros) throws ExceptionMVC {
@@ -20,8 +17,7 @@ public class LivrosDAO {
     try {
         connection = new ConnectionMVC().getConnection();        
         pStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        pStatement.setString(1, livros.getTitulo());
-        //pStatement.setString(2, livros.getAutor());
+        pStatement.setString(1, livros.getTitulo());        
         pStatement.setString(2, livros.getGenero());
         pStatement.setString(3, livros.getSinopse());
         pStatement.setInt(4, livros.getnPaginas());
@@ -48,6 +44,7 @@ public class LivrosDAO {
         }
     }catch(SQLException e){
             throw new ExceptionMVC("Erro ao cadastrar livro: "+ e);
+            
         } finally{
             
             try{

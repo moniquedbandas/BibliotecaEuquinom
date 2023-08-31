@@ -11,7 +11,7 @@ import model.Livros;
 public class ControllerLivros {
     
     public boolean cadastrarLivros(String titulo, ArrayList<String> autores, String genero, String sinopse, int nPaginas, int ano) throws Exception{
-        if(titulo != null && !autores.isEmpty() && genero != null && sinopse != null  && nPaginas != 0 && ano != 0 ){
+        if(titulo != null && !autores.isEmpty() && genero != null && sinopse != null  && nPaginas != 0 && ano >999 && ano<10000 ){
         Livros livros = new Livros(titulo, genero, sinopse, nPaginas, ano);
         livros.setAutores(autores);
         livros.cadastrarLivros(livros);
