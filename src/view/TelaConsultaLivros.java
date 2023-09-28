@@ -67,7 +67,7 @@ public class TelaConsultaLivros extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Titulo", "Autor", "Genero", "Sinopse", "Nº Paginas", "Ano"
+                "Codigo", "Titulo", "Genero", "Sinopse", "Nº Paginas", "Ano"
             }
         ));
         jTablePesquisa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -85,7 +85,6 @@ public class TelaConsultaLivros extends javax.swing.JFrame {
             jTablePesquisa.getColumnModel().getColumn(3).setResizable(false);
             jTablePesquisa.getColumnModel().getColumn(4).setResizable(false);
             jTablePesquisa.getColumnModel().getColumn(5).setResizable(false);
-            jTablePesquisa.getColumnModel().getColumn(6).setResizable(false);
         }
 
         editarLivros.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
@@ -191,7 +190,7 @@ public class TelaConsultaLivros extends javax.swing.JFrame {
         try{
             ArrayList<Livros> livros =  controllerLivros.listarLivros(nome);
             livros.forEach((Livros livro) -> {tableModel.addRow
-        (new Object[]{livro.getCodLivros(),livro.getTitulo(),livro.getAutor(),livro.getGenero(),
+        (new Object[]{livro.getCodLivros(),livro.getTitulo(),livro.getGenero(),
                       livro.getSinopse(),livro.getnPaginas(),livro.getAno()});                    
             });
             jTablePesquisa.setModel(tableModel);
@@ -211,16 +210,16 @@ public class TelaConsultaLivros extends javax.swing.JFrame {
         try {    
             int codLivros = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
             String titulo = (String) model.getValueAt(selectedRow, 1);
-            String autor = (String) model.getValueAt(selectedRow, 2);
-            String genero = (String) model.getValueAt(selectedRow, 3);            
-            String sinopse = (String) model.getValueAt(selectedRow, 4);
-            int nPaginas = Integer.parseInt(model.getValueAt(selectedRow, 5).toString());
-            int ano = Integer.parseInt(model.getValueAt(selectedRow, 6).toString());
+            //String autor = (String) model.getValueAt(selectedRow, 2);
+            String genero = (String) model.getValueAt(selectedRow, 2);            
+            String sinopse = (String) model.getValueAt(selectedRow, 3);
+            int nPaginas = Integer.parseInt(model.getValueAt(selectedRow, 4).toString());
+            int ano = Integer.parseInt(model.getValueAt(selectedRow, 5).toString());
            
             int selectedTabIndex = ((TelaCadastros) telaCadastros).getJTabbedPaneCadastro().getSelectedIndex();
         if (selectedTabIndex == 1) { // Guia 'Livros'
             TelaCadastros telaCadastros = (TelaCadastros) this.telaCadastros;
-            telaCadastros.buscarLivros(codLivros, titulo, autor, genero, sinopse, nPaginas, ano);
+            telaCadastros.buscarLivros(codLivros, titulo, genero, sinopse, nPaginas, ano);
             telaCadastros.setVisible(true);
         } else if (selectedTabIndex == 3) { // Guia 'Itens'
             TelaCadastros telaCadastrosItens = (TelaCadastros) this.telaCadastros;
@@ -271,21 +270,19 @@ public class TelaConsultaLivros extends javax.swing.JFrame {
         }
         try {    
             int codLivros = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
-            String titulo = (String) model.getValueAt(selectedRow, 1);
-            String autor = (String) model.getValueAt(selectedRow, 2);
-            String genero = (String) model.getValueAt(selectedRow, 3);            
-            String sinopse = (String) model.getValueAt(selectedRow, 4);
-            int nPaginas = Integer.parseInt(model.getValueAt(selectedRow, 5).toString());
-            int ano = Integer.parseInt(model.getValueAt(selectedRow, 6).toString());
+            String titulo = (String) model.getValueAt(selectedRow, 1);            
+            String genero = (String) model.getValueAt(selectedRow, 2);            
+            String sinopse = (String) model.getValueAt(selectedRow, 3);
+            int nPaginas = Integer.parseInt(model.getValueAt(selectedRow, 4).toString());
+            int ano = Integer.parseInt(model.getValueAt(selectedRow, 5).toString());
             ControllerLivros controllerLivros = new ControllerLivros();
-            sucesso = controllerLivros.alterarLivros(codLivros,titulo, autor, genero, sinopse, nPaginas, ano);
+            sucesso = controllerLivros.alterarLivros(codLivros,titulo, genero, sinopse, nPaginas, ano);
             if(sucesso){               
-                model.setValueAt(titulo, selectedRow, 1);
-                model.setValueAt(autor, selectedRow, 2);
-                model.setValueAt(genero, selectedRow, 3);                
-                model.setValueAt(sinopse, selectedRow, 4);
-                model.setValueAt(String.valueOf(nPaginas), selectedRow, 5);
-                model.setValueAt(String.valueOf(ano), selectedRow, 6);
+                model.setValueAt(titulo, selectedRow, 1);                
+                model.setValueAt(genero, selectedRow, 2);                
+                model.setValueAt(sinopse, selectedRow, 3);
+                model.setValueAt(String.valueOf(nPaginas), selectedRow, 4);
+                model.setValueAt(String.valueOf(ano), selectedRow, 5);
                 JOptionPane.showMessageDialog(null, "Livro alterado com sucesso!");
                 
                 selectedRow = jTablePesquisa.getSelectedRow();

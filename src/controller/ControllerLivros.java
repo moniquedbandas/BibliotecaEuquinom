@@ -24,8 +24,8 @@ public class ControllerLivros {
         return new Livros().listarLivros(nome);
     }
     
-    public boolean alterarLivros(int codLivros, String titulo, String autor, String genero,String sinopse, int nPaginas, int ano) throws Exception{
-        if(titulo != null && autor !=null && genero != null &&  sinopse != null  && nPaginas != 0 && ano != 0 ){
+    public boolean alterarLivros(int codLivros, String titulo, String genero, String sinopse, int nPaginas, int ano) throws Exception{
+        if(titulo != null && genero != null &&  sinopse != null  && nPaginas != 0 && ano != 0 ){
         Livros livros = new Livros(titulo, genero, sinopse, nPaginas, ano);
         livros.setCodLivros(codLivros);
         livros.alterarLivros(livros);

@@ -41,10 +41,10 @@ public class TelaCadastros extends javax.swing.JFrame {
         this.codLivros = codLivros;
         this.jTextFieldTituloItens.setText(titulo);
     }
-    public void buscarLivros(int codLivros, String titulo, String autor, String genero, String sinopse, int nPaginas, int ano){
+    public void buscarLivros(int codLivros, String titulo,  String genero, String sinopse, int nPaginas, int ano){
         this.codLivros = codLivros;
         this.jTextFieldTitulo.setText(titulo);        
-        this.jComboBoxAutor.getModel().setSelectedItem(autor);
+        //this.jComboBoxAutor.getModel().setSelectedItem(autor);
         this.jTextFieldGenero.setText(genero);
         this.jTextAreaSinopse.setText(sinopse);
         this.jTextFieldNpgs.setText(Integer.toString(nPaginas));

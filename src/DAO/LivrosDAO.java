@@ -80,7 +80,7 @@ public class LivrosDAO {
                     Livros livro = new Livros();
                     livro.setCodLivros(rs.getInt("codLivros"));
                     livro.setTitulo(rs.getString("titulo"));
-                    livro.setAutor(rs.getString("autor"));
+                    //livro.setAutor(rs.getString("autor")); Deletei esta linha pq não tem mais coluna de autor na tabela livros no banco de dados
                     livro.setGenero(rs.getString("genero"));                    
                     livro.setSinopse(rs.getString("sinopse"));
                     livro.setnPaginas(rs.getInt("nPaginas"));
@@ -109,7 +109,7 @@ public class LivrosDAO {
     }
     
     public void alterarLivros(Livros livros) throws ExceptionMVC{
-        String sql = "UPDATE livros SET titulo=?, autor=?, genero=?, sinopse=?, nPaginas=?, ano=? WHERE codLivros=?";
+        String sql = "UPDATE livros SET titulo=?, genero=?, sinopse=?, nPaginas=?, ano=? WHERE codLivros=?";
         PreparedStatement pStatement = null;
         Connection connection = null;
         
@@ -117,12 +117,12 @@ public class LivrosDAO {
             connection = new ConnectionMVC().getConnection();
             pStatement = connection.prepareStatement(sql);
             pStatement.setString(1, livros.getTitulo());
-            pStatement.setString(2, livros.getAutor());
-            pStatement.setString(3, livros.getGenero());
-            pStatement.setString(4, livros.getSinopse());
-            pStatement.setInt(5, livros.getnPaginas());
-            pStatement.setInt(6, livros.getAno());
-            pStatement.setInt(7, livros.getCodLivros());
+            //pStatement.setString(2, livros.getAutor()); Deletei esta linha pq não tem mais coluna de autor na tabela livros no banco de dados
+            pStatement.setString(2, livros.getGenero());
+            pStatement.setString(3, livros.getSinopse());
+            pStatement.setInt(4, livros.getnPaginas());
+            pStatement.setInt(5, livros.getAno());
+            pStatement.setInt(6, livros.getCodLivros());
             pStatement.execute();
             
                     
